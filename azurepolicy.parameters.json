@@ -1,0 +1,9 @@
+{
+  "secretName": {
+    "type": "String",
+    "metadata": {
+      "displayName": "Secret Name",
+      "description": "Name of the secret to check."
+    }
+  }
+}

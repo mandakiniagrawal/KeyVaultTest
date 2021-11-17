@@ -1,0 +1,33 @@
+{
+  "properties": {
+    "displayName": "Deny when a given secret doesn't start with a specific name",
+    "description": "Deny when a given secret doesn't start with a specific name",
+    "mode": "All",
+    "parameters": {
+      "secretName": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Secret Name",
+          "description": "Name of the secret"
+        }
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.KeyVault vaults/secrets"
+          },
+          {
+            "field": "name",
+            "notEquals": "[parameters('secretName')]"
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+  }
+}

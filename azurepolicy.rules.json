@@ -1,17 +1,17 @@
 {
-    "if": {
-        "allOf": [
-          {
-            "field": "type",
-            "equals": "Microsoft.KeyVault vaults/secrets"
-          },
-          {
-            "field": "name",
-            "notEquals": "[parameters('secretName')]"
-          }
-        ]
-      },
-      "then": {
-        "effect": "deny"
+        "if": {
+          "allOf": [
+            {
+              "field": "type",
+              "equals": "Microsoft.KeyVault.Data/vaults/secrets"
+            },
+            {
+              "field": "Microsoft.KeyVault.Data/vaults/secrets/name",
+              "notEquals": "str"
+            }
+          ]
+        },
+        "then": {
+          "effect": "[parameters('effect')]"
+        }
       }
-    }
